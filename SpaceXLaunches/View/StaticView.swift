@@ -11,16 +11,6 @@ protocol StaticViewDelegate: AnyObject {
     func didChangeSegmentedControl(_ sender: UISegmentedControl)
 }
 
-struct StaticViewViewModel {
-    let title: String
-    let imageView: UIImage
-    let ownerName: String
-    let ownerDescription: String
-    let flightNumber: String
-    let date: String
-    let description: String
-}
-
 class StaticView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -50,6 +40,7 @@ class StaticView: UIView {
         super.layoutSubviews()
         self.backgroundColor = .white
         self.setFonts()
+        self.setLabelsColor()
         self.titleLabel.numberOfLines = 1
         self.imageView.contentMode = .scaleAspectFill
         self.imageView.layer.cornerRadius = 8
@@ -61,13 +52,20 @@ class StaticView: UIView {
                                         action: #selector((segmentedControlValueChanged(_:))),
                                         for: .valueChanged)
         
-           
-        let font = UIFont.systemFont(ofSize: 10)
+        let font = UIFont.systemFont(ofSize: 10,weight: .bold)
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font],
                                                 for: .normal)
-        
         self.bottomContainerView.backgroundColor = .clear
-        self.segmentedControl.backgroundColor = .white
+    }
+    
+    private func setLabelsColor() {
+        self.ownerNameLabel.textColor = .white
+        self.ownerDescriptionLabel.textColor = .white
+        self.ownerDescriptionLabel.textColor = .white
+        self.flightNumberLabel.textColor = .white
+        self.dateLabel.textColor = .white
+        self.dateLabel.textColor = .white
+        self.descriptionLabel.textColor = .white
     }
     
     
@@ -92,10 +90,11 @@ class StaticView: UIView {
         self.dateLabel.text = viewModel.date
         self.descriptionLabel.text = viewModel.description
         self.ownerImageView.image = UIImage(named: "AliHammoud")
-        self.imageView.backgroundColor = .red
+        self.segmentedControl.setTitleTextAttributes( [NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
     }
     
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         self.delegate?.didChangeSegmentedControl(sender)
+        
     }
 }

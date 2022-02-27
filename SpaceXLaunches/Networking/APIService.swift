@@ -40,7 +40,6 @@ class APIService: APIServiceProtocol {
         dateFormatter.dateFormat = "yyyyMMdd'T'HHmmssZ"
         let parameters = [
             "query": [
-//                TODO: data_utc < 3 && (upcomming == true || success == true)
 //                "upcoming" : true,
 //                "success" : true,
                 "date_utc": [

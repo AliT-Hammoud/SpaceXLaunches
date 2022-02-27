@@ -7,23 +7,8 @@
 
 import UIKit
 
-struct SecondViewControllerViewModel {
-    var rocket: String
-    let date: String?
-    let flightNumberS: Int?
-    let dateLocal: String?
-
-    init(with viewModel: RocketLaunchesCollectionViewCellViewModel) {
-        self.rocket = viewModel.rocket ?? ""
-        self.date = viewModel.date
-        self.flightNumberS = viewModel.flightNumberS
-        self.dateLocal = viewModel.date
-    }
-}
-
 class SecondViewController: UIViewController {
-    var viewModel: RocketDetailViewModelType = RocketDetailViewModel()
-//    var dataViewModel = [RocketLaunchesCollectionViewCellViewModel]()
+    private var viewModel: RocketDetailViewModelType = RocketDetailViewModel()
     private var data: SecondViewControllerViewModel
     private var wikiURL = URL(string: "")
     private let backgroundImageView: UIImageView = {
@@ -31,6 +16,16 @@ class SecondViewController: UIViewController {
         let imageView = UIImageView(image: image)
         
         return imageView
+    }()
+    
+    private let closeButton: UIButton = {
+        let button = UIButton()
+        button.frame = CGRect(x: 0, y: 0, width: 36 , height: 36)
+        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 8
+        button.tintColor = .black
+        return button
     }()
     
     private var rocketDetailContentView: RocketDetailView!
@@ -65,11 +60,10 @@ class SecondViewController: UIViewController {
     
     private func setTabBarItems() {
         self.navigationItem.setHidesBackButton(true, animated: false)
-        let tabbar1 = UIBarButtonItem(barButtonSystemItem: .stop,
-                                      target: self,
-                                      action: #selector(self.dismissVC(_ :)))
-        tabbar1.tintColor = .black
-        navigationItem.rightBarButtonItem = tabbar1
+        let firstBarButtonItem = UIBarButtonItem(customView: self.closeButton)
+        self.closeButton.addTarget(self, action: #selector(self.dismissVC(_ :)), for: .touchUpInside)
+        firstBarButtonItem.tintColor = .black
+        navigationItem.rightBarButtonItem = firstBarButtonItem
     }
     
     override func viewDidLayoutSubviews() {

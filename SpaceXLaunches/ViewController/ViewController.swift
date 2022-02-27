@@ -9,28 +9,9 @@ import UIKit
 import Alamofire
 
 class ViewController: UIViewController {
-    var viewModel: LaunchListViewModelType = LaunchListViewModel()
-    var dataViewModel = [RocketLaunchesCollectionViewCellViewModel]()
+    private var viewModel: LaunchListViewModelType = LaunchListViewModel()
+    private var dataViewModel = [RocketLaunchesCollectionViewCellViewModel]()
     private var staticView: StaticView!
-    private var staticViewViewModelArray = [
-     StaticViewViewModel(title: "The Big Launch",
-                                        imageView: UIImage(named: "RocketImageBackground")!,
-                                        ownerName: "by Eng. Dieter Rams",
-                                        ownerDescription: "ISS geosynchronous and is it stationary",
-                                        flightNumber: "2355",
-                                        date: "24 Feb 2022 11:25 GMT+5",
-                                        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eros enim, dictum vitae quam nec, congue feugiat neque. Vivamus ut luctus enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eros enim, dictum vitae quam nec, congue feugiat neque. Vivamus ut luctus enim. "),
-    StaticViewViewModel(title: "Launch The Big Launch",
-                                        imageView: UIImage(named: "RocketImageBackground")!,
-                                        ownerName: "Dieter Rams by Eng.",
-                                        ownerDescription: "and is it stationary ISS geosynchronous ",
-                                        flightNumber: "5523",
-                                        date: "24 Feb 2022 11:25 GMT+5",
-                                        description: "consectetur adipiscing elit. Pellentesque eros enim, dictum vitae quam nec, congue feugiat neque. Vivamus ut luctus enim Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eros enim, dictum vitae quam nec, congue feugiat neque. Vivamus ut luctus enim. Lorem ipsum dolor sit amet. consectetur adipiscing elit. Pellentesque eros enim, dictum vitae quam nec, congue feugiat neque. Vivamus ut luctus enim")]
-    private let activityIndicatorView: UIActivityIndicatorView = {
-        let indicatorView = UIActivityIndicatorView()
-        return indicatorView
-    }()
     
     private let staticViewContainerView: UIView = {
         let view = UIView()
@@ -65,11 +46,8 @@ class ViewController: UIViewController {
         self.view.backgroundColor = .white
         self.setTabBarItems()
         self.registerCollectionCell()
-//        self.setSegmentedControl()
         self.rocketLaunchesCollectionView.delegate = self
         self.rocketLaunchesCollectionView.dataSource = self
-        
-        
         self.viewModel.fetchLaunchesWithQuery(){ reponses in
             guard let reponse = reponses else { return }
             self.dataViewModel = reponse
@@ -79,9 +57,9 @@ class ViewController: UIViewController {
     }
     
     private func setTabBarItems() {
-        let tabbar1 = UIBarButtonItem(image: UIImage(named: "bell"), style: .done, target: nil, action: nil)
-        let tabbar2 = UIBarButtonItem(image: UIImage(named:"searchMagnifier"),  style: .done, target: nil, action: nil)
-        navigationItem.rightBarButtonItems = [tabbar1,tabbar2]
+        let firstBarButtonItem = UIBarButtonItem(image: UIImage(named: "bell"), style: .done, target: nil, action: nil)
+        let secondBarButtonItem = UIBarButtonItem(image: UIImage(named:"searchMagnifier"),  style: .done, target: nil, action: nil)
+        navigationItem.rightBarButtonItems = [firstBarButtonItem, secondBarButtonItem]
         let leftTabBarTitle = UIBarButtonItem(title: "Launches", style: .done, target: nil, action: nil)
         leftTabBarTitle.tintColor = .black
         navigationItem.leftBarButtonItem = leftTabBarTitle
@@ -106,7 +84,7 @@ class ViewController: UIViewController {
                 equalTo: self.view.leadingAnchor),
             self.staticViewContainerView.trailingAnchor.constraint(
                 equalTo: self.view.trailingAnchor),
-            self.staticViewContainerView.topAnchor.constraint(equalTo: self.rocketLaunchesCollectionView.bottomAnchor, constant: 36),
+            self.staticViewContainerView.topAnchor.constraint(equalTo: self.rocketLaunchesCollectionView.bottomAnchor, constant: 26),
             self.staticViewContainerView.heightAnchor.constraint(equalToConstant: 450),
             self.staticViewContainerView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor)
         ]
@@ -138,7 +116,7 @@ class ViewController: UIViewController {
                 constant: 24),
             self.rocketLaunchesCollectionView.trailingAnchor.constraint(
                 equalTo: self.view.trailingAnchor),
-            self.rocketLaunchesCollectionView.topAnchor.constraint(equalTo: self.scrollView.topAnchor),
+            self.rocketLaunchesCollectionView.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: 30),
             self.rocketLaunchesCollectionView.heightAnchor.constraint(equalToConstant: 200.5)
         ]
         NSLayoutConstraint.activate(constraints)
@@ -163,7 +141,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
         
         self.staticView.delegate = self
-        self.staticView.configure(with: staticViewViewModelArray[0])
+        self.staticView.configure(with: Constants().staticViewViewModelArray[0])
     }
     
     
@@ -208,6 +186,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 extension ViewController: StaticViewDelegate {
     
     func didChangeSegmentedControl(_ sender: UISegmentedControl) {
-        self.staticView.configure(with: staticViewViewModelArray[sender.selectedSegmentIndex])
+        self.staticView.configure(with: Constants().staticViewViewModelArray[sender.selectedSegmentIndex])
     }
 }
