@@ -28,8 +28,6 @@
 		DD4E7D0B27CAAFD60009EEB1 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E7D0A27CAAFD60009EEB1 /* UIViewExtension.swift */; };
 		DDF0447E27C9440C006E8D97 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF0447D27C9440C006E8D97 /* APIService.swift */; };
 		DDF0448027C94634006E8D97 /* LaunchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF0447F27C94634006E8D97 /* LaunchListViewModel.swift */; };
-		DDF4BE5327CBAAA700CABD98 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDF4BE5127CBAAA700CABD98 /* Lato-Regular.ttf */; };
-		DDF4BE5427CBAAA700CABD98 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDF4BE5227CBAAA700CABD98 /* Lato-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,8 +56,6 @@
 		DD4E7D0A27CAAFD60009EEB1 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		DDF0447D27C9440C006E8D97 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		DDF0447F27C94634006E8D97 /* LaunchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchListViewModel.swift; sourceTree = "<group>"; };
-		DDF4BE5127CBAAA700CABD98 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Regular.ttf"; path = "../../../Lato/Lato-Regular.ttf"; sourceTree = "<group>"; };
-		DDF4BE5227CBAAA700CABD98 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Bold.ttf"; path = "../../../Lato/Lato-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,8 +185,6 @@
 		DDF4BE5027CBAA8C00CABD98 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				DDF4BE5227CBAAA700CABD98 /* Lato-Bold.ttf */,
-				DDF4BE5127CBAAA700CABD98 /* Lato-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -255,9 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDF4BE5427CBAAA700CABD98 /* Lato-Bold.ttf in Resources */,
 				DD0C0A3427CB68F900C87949 /* StaticView.xib in Resources */,
-				DDF4BE5327CBAAA700CABD98 /* Lato-Regular.ttf in Resources */,
 				DD123CAB27C8E1EB00FA9050 /* LaunchScreen.storyboard in Resources */,
 				DD123CB927C8F43400FA9050 /* RocketLaunchesCollectionViewCell.xib in Resources */,
 				DD123CA827C8E1EB00FA9050 /* Assets.xcassets in Resources */,
