@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "Falcon_Heavy_Demo_Mission_(39337245145).jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}
